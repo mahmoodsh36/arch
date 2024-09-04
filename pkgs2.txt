@@ -1,1 +1,11 @@
 brave-bin
+spotdl
+mongodb-bin
+youtube-music-bin
+firebase-tools-bin
+tor-browser
+mongodb-tools-bin
+
+dict-gcide
+dict-wn
+dict-moby-thesaurus

@@ -24,6 +24,35 @@ pulsemixer
 openssh
 mosh
 xclip
+firefox
+yt-dlp
+gdb
+tree
+rsync
+sshfs
+ffmpeg
+imagemagick
+transmission-cli
+socat
+zathura-pdf-mupdf
+zathura-djvu
+maim
+parcellite
+dictd
+bluez
+bluez-utils
+
+nodejs
+npm
+julia
+sbcl
+python-magic
+coq
+
+lua-language-server
+python-lsp-server
+pyright
+typescript-language-server
 
 sof-firmware
 

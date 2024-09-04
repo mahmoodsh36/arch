@@ -15,7 +15,7 @@ Option "VertEdgeScroll" "on"
 Option "VertTwoFingerScroll" "on"
 Option "HorizEdgeScroll" "on"
 Option "HorizTwoFingerScroll" "on"
-Option "AccelSpeed" "0.5"
+Option "AccelSpeed" "0.9"
 EndSection
 EOF
 
@@ -37,13 +37,19 @@ cat <<EOF > /etc/sudoers
 mahmooz ALL=(ALL:ALL) NOPASSWD: ALL
 EOF
 
-cat <<EOF > /usr/share/applications/my_mpv.desktop
+cat <<EOF > /usr/share/applications/mympv.desktop
+[Desktop Entry]
+Type=Application
 Name=mympv
 Exec=mympv.sh %F
 Terminal=false
+Icon=mpv
+TryExec=mpv
+Categories=AudioVideo;Audio;Video;Player;TV;
+GenericName=mympv
 EOF
 
-for service in NetworkManager my_mpv_logger_service; do
+for service in NetworkManager sshd mongodb my_mpv_logger_service; do
     systemctl enable $service
     systemctl is-active --quiet $service || systemctl start $service
 done
