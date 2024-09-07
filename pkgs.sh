@@ -13,6 +13,7 @@ setup_yay() {
     # rm -rf yay
 }
 
+setup_yay
 yay --needed --noconfirm -S - < ~/work/arch/pkgs2.txt
 
 cd ~/work/sxiv/

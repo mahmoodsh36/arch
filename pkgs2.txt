@@ -5,6 +5,9 @@ youtube-music-bin
 firebase-tools-bin
 tor-browser
 mongodb-tools-bin
+woeusb-ng
+light
+julia-bin
 
 dict-gcide
 dict-wn

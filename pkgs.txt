@@ -41,10 +41,12 @@ parcellite
 dictd
 bluez
 bluez-utils
+jq
+ttf-monaspace-variable
+gdisk
 
 nodejs
 npm
-julia
 sbcl
 python-magic
 coq
