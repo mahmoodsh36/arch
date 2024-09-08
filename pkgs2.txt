@@ -1,7 +1,7 @@
 brave-bin
 spotdl
 mongodb-bin
-youtube-music-bin
+# youtube-music-bin
 firebase-tools-bin
 tor-browser
 mongodb-tools-bin

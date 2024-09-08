@@ -44,6 +44,18 @@ bluez-utils
 jq
 ttf-monaspace-variable
 gdisk
+tree-sitter-cli
+
+arch-install-scripts
+linux-lts
+base
+base-devel
+networkmanager
+grub
+efibootmgr
+linux-firmware
+xorg
+xorg-xinit
 
 nodejs
 npm

@@ -1,5 +1,12 @@
 #!/usr/bin/env sh
-sudo pacman --needed --noconfirm -S - < ~/work/arch/pkgs.txt
+
+# packages written in a file, ignore lines starting with #
+list_packages_from_file() {
+    grep -v '^#' "$1"
+}
+
+# install packages
+list_packages_from_file ~/work/arch/pkgs.txt | sudo pacman --needed --noconfirm -S -
 
 setup_yay() {
     yay --version && return 1
@@ -13,8 +20,11 @@ setup_yay() {
     # rm -rf yay
 }
 
+# install aur packages
 setup_yay
-yay --needed --noconfirm -S - < ~/work/arch/pkgs2.txt
+# yay apparently doesnt auto resolve conflicts even with --noconfirm, so we use 'yes'
+# list_packages_from_file ~/work/arch/pkgs2.txt | yay --answerdiff None --answerclean None --mflags "--noconfirm " --needed -S -
+yes | yay --answerdiff None --answerclean None --mflags "--noconfirm " --needed -S $(list_packages_from_file ~/work/arch/pkgs2.txt)
 
 cd ~/work/sxiv/
 sudo make install clean

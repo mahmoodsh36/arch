@@ -37,6 +37,19 @@ mkdir /mnt/boot 2>/dev/null
 mount "$boot_partition" /mnt/boot || exit
 swapon "$swap_partition"
 
-# generate config (we need the hardware-configuration.nix file that is generated)
-mkdir -p /mnt/etc/
-cd /mnt/etc/
+# install packages
+pacstrap - < pkgs.txt
+
+# generate /etc/fstab
+genfstab -U /mnt >> /mnt/etc/fstab
+
+{
+  ln -sf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime
+  hwclock --systohc
+  echo "LANG=en_US.UTF-8" > /etc/locale.conf
+  locale-gen
+  echo "mahmooz" > /etc/hostname
+  grub-install /dev/sda
+  grub-mkconfig -o /boot/grub/grub.cfg
+  echo root:root | chpasswd
+} | arch-chroot /mnt
