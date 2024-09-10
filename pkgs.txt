@@ -45,6 +45,10 @@ jq
 ttf-monaspace-variable
 gdisk
 tree-sitter-cli
+okular
+zip
+unzip
+sagemath
 
 arch-install-scripts
 linux-lts
