@@ -8,6 +8,8 @@ mongodb-tools-bin
 woeusb-ng
 light
 julia-bin
+python-huggingface-hub
+adb-sync-git
 
 dict-gcide
 dict-wn

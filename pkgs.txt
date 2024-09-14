@@ -37,7 +37,7 @@ socat
 zathura-pdf-mupdf
 zathura-djvu
 maim
-parcellite
+# parcellite
 dictd
 bluez
 bluez-utils
@@ -49,6 +49,14 @@ okular
 zip
 unzip
 sagemath
+pandoc
+gzip
+iftop
+btop
+android-tools
+vim
+# python-beautifulsoup4
+vscode-json-languageserver
 
 arch-install-scripts
 linux-lts
