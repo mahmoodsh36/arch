@@ -1,6 +1,6 @@
 zsh
 git
-emacs
+# emacs
 neovim
 xfce4
 awesome
@@ -57,6 +57,10 @@ android-tools
 vim
 # python-beautifulsoup4
 vscode-json-languageserver
+
+# for emacs compilation
+webkit2gtk
+libgccjit
 
 arch-install-scripts
 linux-lts
