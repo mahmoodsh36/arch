@@ -42,8 +42,8 @@ yes | mkfs.ext4 "$root_partition"
 
 # mount the partitions
 mount "$root_partition" /mnt || exit
-mkdir /mnt/boot 2>/dev/null
-mount "$boot_partition" /mnt/boot || exit
+mkdir -p /mnt/boot/efi 2>/dev/null
+mount "$boot_partition" /mnt/boot/efi || exit
 swapon "$swap_partition"
 
 echo installing packages
@@ -52,6 +52,8 @@ echo installing packages
 pacstrap /mnt $(list_packages_from_file /home/mahmooz/work/arch/pkgs.txt)
 
 mkdir /mnt/etc/
+
+echo entering chroot for further configuration
 
 # generate /etc/fstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -66,3 +68,27 @@ genfstab -U /mnt >> /mnt/etc/fstab
   grub-mkconfig -o /boot/grub/grub.cfg
   echo root:root | chpasswd
 } | arch-chroot /mnt
+
+# will this work better?
+# arch-chroot /mnt /bin/bash -c "
+# ln -sf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime &&
+# hwclock --systohc &&
+# echo 'LANG=en_US.UTF-8' > /etc/locale.conf &&
+# locale-gen &&
+# echo 'mahmooz' > /etc/hostname &&
+
+# # Install GRUB only on the USB drive (/dev/sdb)
+# grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=usb /dev/sdb &&
+
+# # Generate GRUB configuration on the USB drive
+# grub-mkconfig -o /boot/grub/grub.cfg &&
+
+# # Set root password
+# echo 'root:root' | chpasswd
+# "
+
+echo copying scripts
+
+cp -r /home/mahmooz/work/arch /mnt
+
+# notice that installing the grub bootloader seems to delete the present one.. i need to either fix this by installing it on both devices or keep it as a task that is done manually
