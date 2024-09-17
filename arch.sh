@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 
+# packages written in a file, ignore lines starting with #
+list_packages_from_file() {
+    grep -v '^#' "$1"
+}
+
 # ./arch.sh /dev/nvme0n1
 
 drive="$1"
@@ -8,12 +13,16 @@ drive="$1"
 [ "$EUID" -ne 0 ] && echo "must be run as root" && exit
 
 # make sure /mnt exists
-sudo mkdir /mnt 2>/dev/null
+mkdir /mnt 2>/dev/null
+
+echo cleanup
 
 # incase there are leftovers from a previous run
-sudo umount /mnt/boot 2>/dev/null
-sudo umount /mnt/ 2>/dev/null
+umount /mnt/boot 2>/dev/null
+umount /mnt/ 2>/dev/null
 swapoff -a
+
+echo preparing drive
 
 # prepare the drive
 parted "$drive" mklabel gpt
@@ -37,8 +46,12 @@ mkdir /mnt/boot 2>/dev/null
 mount "$boot_partition" /mnt/boot || exit
 swapon "$swap_partition"
 
+echo installing packages
+
 # install packages
-pacstrap - < pkgs.txt
+pacstrap /mnt $(list_packages_from_file /home/mahmooz/work/arch/pkgs.txt)
+
+mkdir /mnt/etc/
 
 # generate /etc/fstab
 genfstab -U /mnt >> /mnt/etc/fstab
