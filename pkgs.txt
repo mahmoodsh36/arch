@@ -62,6 +62,11 @@ wezterm
 notmuch
 isync
 
+nvidia-lts
+nvidia-settings
+nvtop
+nvidia-utils
+
 # for emacs compilation
 webkit2gtk
 libgccjit
