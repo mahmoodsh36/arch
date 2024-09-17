@@ -57,6 +57,10 @@ android-tools
 vim
 # python-beautifulsoup4
 vscode-json-languageserver
+libreoffice
+wezterm
+notmuch
+isync
 
 # for emacs compilation
 webkit2gtk
