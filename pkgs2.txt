@@ -3,13 +3,15 @@ spotdl
 mongodb-bin
 # youtube-music-bin
 firebase-tools-bin
-tor-browser
+# tor-browser
 mongodb-tools-bin
 woeusb-ng
 light
 julia-bin
 python-huggingface-hub
 adb-sync-git
+downgrade
+koboldcpp-bin
 
 dict-gcide
 dict-wn

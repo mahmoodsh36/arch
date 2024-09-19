@@ -61,11 +61,16 @@ libreoffice
 wezterm
 notmuch
 isync
+pulseaudio-bluetooth
+lshw
+ollama
 
 nvidia-lts
 nvidia-settings
 nvtop
 nvidia-utils
+cuda
+cuda-tools
 
 # for emacs compilation
 webkit2gtk
