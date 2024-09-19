@@ -20,3 +20,5 @@ export PERSONAL_WEBSITE="https://mahmoodsh36.github.io";
 export EDITOR="nvim";
 export BROWSER="firefox";
 export TERMINAL="wezterm";
+
+source ./pkg_lists.sh
