@@ -25,10 +25,10 @@ setup_yay() {
     yay --version && return 1
     mkdir -p ~/.cache/yay/ 2>/dev/null
     cd ~/.cache/yay/
-    sudo pacman -S --needed git base-devel
+    sudo pacman -S --needed --noconfirm git base-devel
     git clone https://aur.archlinux.org/yay.git
     cd yay
-    makepkg -si
+    makepkg -si --noconfirm
     # cd ..
     # rm -rf yay
 }

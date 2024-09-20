@@ -80,6 +80,7 @@ liquidctl
 openrgb
 jupyter-notebook
 ninja
+dosfstools
 
 ollama
 
