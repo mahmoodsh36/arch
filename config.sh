@@ -37,7 +37,7 @@ WantedBy=multi-user.target
 EOF
 
 # sudo without password
-cat << EOF > /etc/sudoers
+cat << 'EOF' > /etc/sudoers
 mahmooz ALL=(ALL:ALL) NOPASSWD: ALL
 EOF
 
@@ -76,8 +76,9 @@ SUBSYSTEM=="block", ENV{ID_FS_UUID}=="be5af23f-da6d-42ee-a346-5ad3af1a299a", RUN
 EOF
 
 su "$MAIN_USER" mkdir -p "$WORK_DIR" 2>/dev/null
-# sudo -E su --preserve-environment "$MAIN_USER" << 'EOF'
 # su --preserve-environment "$MAIN_USER" << 'EOF'
+# echo "$WORK_DIR"
+# echo "$MAIN_USER"
 # for repo in otherdots nvim scripts arch awesome nixos emacs.d; do
 #     if [ ! -d "$WORK_DIR/$repo" ]; then
 #         remote="https://github.com/mahmoodsheikh36/$repo"

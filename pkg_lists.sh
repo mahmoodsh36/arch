@@ -116,7 +116,7 @@ ttf-inconsolata
 
 export AUR_PACKAGE_LIST=$(parse_package_list '
 brave-bin
-spotdl
+# spotdl
 # mongodb-bin
 # youtube-music-bin
 firebase-tools-bin
