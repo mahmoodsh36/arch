@@ -66,7 +66,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
   echo "LANG=en_US.UTF-8" > /etc/locale.conf
   locale-gen
   echo "mahmooz" > /etc/hostname
-  grub-install /dev/sda
+  grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=usb /dev/sda
   grub-mkconfig -o /boot/grub/grub.cfg
   echo root:root | chpasswd
 } | arch-chroot /mnt
@@ -78,9 +78,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 # echo 'LANG=en_US.UTF-8' > /etc/locale.conf &&
 # locale-gen &&
 # echo 'mahmooz' > /etc/hostname &&
-
-# # Install GRUB only on the USB drive (/dev/sdb)
-# grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=usb /dev/sdb &&
 
 # # Generate GRUB configuration on the USB drive
 # grub-mkconfig -o /boot/grub/grub.cfg &&
