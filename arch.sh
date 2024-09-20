@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+source ./env.sh
+
 # packages written in a file, ignore lines starting with #
 list_packages_from_file() {
     grep -v '^#' "$1"
@@ -49,7 +51,7 @@ swapon "$swap_partition"
 echo installing packages
 
 # install packages
-pacstrap /mnt $(list_packages_from_file /home/mahmooz/work/arch/pkgs.txt)
+pacstrap /mnt $BASE_PACKAGE_LIST
 
 mkdir /mnt/etc/
 
