@@ -21,4 +21,4 @@ export EDITOR="nvim";
 export BROWSER="firefox";
 export TERMINAL="wezterm";
 
-source ./pkg_lists.sh
+source $WORK_DIR/arch/pkg_lists.sh

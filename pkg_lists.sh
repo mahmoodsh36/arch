@@ -74,6 +74,12 @@ notmuch
 isync
 pulseaudio-bluetooth
 lshw
+inkscape
+iotop
+liquidctl
+openrgb
+jupyter-notebook
+ninja
 
 ollama
 
@@ -101,6 +107,7 @@ lua-language-server
 python-lsp-server
 pyright
 typescript-language-server
+bash-language-server
 
 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 ttf-inconsolata
@@ -109,11 +116,11 @@ ttf-inconsolata
 export AUR_PACKAGE_LIST=$(parse_package_list '
 brave-bin
 spotdl
-mongodb-bin
+# mongodb-bin
 # youtube-music-bin
 firebase-tools-bin
 # tor-browser
-mongodb-tools-bin
+# mongodb-tools-bin
 woeusb-ng
 light
 julia-bin
