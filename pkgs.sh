@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
 source ./env.sh
-source ./per_machine.sh
 
 # packages written in a file, ignore lines starting with #
 list_packages_from_file() {
@@ -17,7 +16,7 @@ sudo pacman --needed --noconfirm -S $BASE_PACKAGE_LIST || exit 1
 # nvidia packages
 if $MY_ENABLE_NVIDIA; then
     echo installing nvidia packages
-    sudo pacman --needed --noconfirm -S $BASE_PACKAGE_LIST || exit 1
+    sudo pacman --needed --noconfirm -S $NVIDIA_PACKAGE_LIST || exit 1
 fi
 
 # aur packages
@@ -42,6 +41,5 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg || exit 1
 
 cd ~/work/sxiv/
 sudo make install clean
-
 
 echo done!

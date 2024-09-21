@@ -22,3 +22,4 @@ export BROWSER="firefox";
 export TERMINAL="wezterm";
 
 source $WORK_DIR/arch/pkg_lists.sh
+source $WORK_DIR/arch/per_machine.sh

@@ -128,6 +128,7 @@ julia-bin
 python-huggingface-hub
 adb-sync-git
 downgrade
+koboldcpp-bin
 
 dict-gcide dict-wn dict-moby-thesaurus
 ')
@@ -136,5 +137,4 @@ export NVIDIA_PACKAGE_LIST=$(parse_package_list '
 nvidia-lts nvidia-settings nvidia-utils
 nvtop
 cuda cuda-tools
-koboldcpp-bin
 ')
