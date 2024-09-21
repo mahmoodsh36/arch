@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+source ./env.sh
+
 # packages written in a file, ignore lines starting with #
 list_packages_from_file() {
     grep -v '^#' "$1"
@@ -49,7 +51,7 @@ swapon "$swap_partition"
 echo installing packages
 
 # install packages
-pacstrap /mnt $(list_packages_from_file /home/mahmooz/work/arch/pkgs.txt)
+pacstrap /mnt $BASE_PACKAGE_LIST
 
 mkdir /mnt/etc/
 
@@ -64,7 +66,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
   echo "LANG=en_US.UTF-8" > /etc/locale.conf
   locale-gen
   echo "mahmooz" > /etc/hostname
-  grub-install /dev/sda
+  grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=usb /dev/sda
   grub-mkconfig -o /boot/grub/grub.cfg
   echo root:root | chpasswd
 } | arch-chroot /mnt
@@ -76,9 +78,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 # echo 'LANG=en_US.UTF-8' > /etc/locale.conf &&
 # locale-gen &&
 # echo 'mahmooz' > /etc/hostname &&
-
-# # Install GRUB only on the USB drive (/dev/sdb)
-# grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=usb /dev/sdb &&
 
 # # Generate GRUB configuration on the USB drive
 # grub-mkconfig -o /boot/grub/grub.cfg &&
