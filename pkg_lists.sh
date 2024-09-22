@@ -81,6 +81,7 @@ openrgb
 jupyter-notebook
 ninja
 dosfstools
+jdk-openjdk
 
 ollama
 
@@ -128,7 +129,8 @@ julia-bin
 python-huggingface-hub
 adb-sync-git
 downgrade
-koboldcpp-bin
+# koboldcpp-bin
+# miniconda3
 
 dict-gcide dict-wn dict-moby-thesaurus
 ')

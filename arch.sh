@@ -60,7 +60,18 @@ echo entering chroot for further configuration
 # generate /etc/fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-{
+# {
+#   ln -sf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime
+#   hwclock --systohc
+#   echo "LANG=en_US.UTF-8" > /etc/locale.conf
+#   locale-gen
+#   echo "mahmooz" > /etc/hostname
+#   grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=usb /dev/sda
+#   grub-mkconfig -o /boot/grub/grub.cfg
+#   echo root:root | chpasswd
+# } | arch-chroot /mnt
+
+arch-chroot /mnt /bin/bash -c '
   ln -sf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime
   hwclock --systohc
   echo "LANG=en_US.UTF-8" > /etc/locale.conf
@@ -69,22 +80,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
   grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=usb /dev/sda
   grub-mkconfig -o /boot/grub/grub.cfg
   echo root:root | chpasswd
-} | arch-chroot /mnt
-
-# will this work better?
-# arch-chroot /mnt /bin/bash -c "
-# ln -sf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime &&
-# hwclock --systohc &&
-# echo 'LANG=en_US.UTF-8' > /etc/locale.conf &&
-# locale-gen &&
-# echo 'mahmooz' > /etc/hostname &&
-
-# # Generate GRUB configuration on the USB drive
-# grub-mkconfig -o /boot/grub/grub.cfg &&
-
-# # Set root password
-# echo 'root:root' | chpasswd
-# "
+'
 
 echo copying scripts
 
