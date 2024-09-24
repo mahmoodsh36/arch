@@ -99,6 +99,9 @@ linux-firmware sof-firmware
 xorg
 xorg-xinit
 
+gdm
+hyprland
+
 nodejs
 npm
 sbcl
@@ -131,6 +134,7 @@ adb-sync-git
 downgrade
 # koboldcpp-bin
 # miniconda3
+xremap-wlroots-bin
 
 dict-gcide dict-wn dict-moby-thesaurus
 ')

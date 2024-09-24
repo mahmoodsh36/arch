@@ -92,7 +92,7 @@ su "$MAIN_USER" mkdir -p "$WORK_DIR" 2>/dev/null
 # done
 # EOF
 
-for service in NetworkManager sshd mongodb my_mpv_logger_service dictd bluetooth; do
+for service in NetworkManager sshd mongodb my_mpv_logger_service dictd bluetooth gdm; do
     systemctl enable $service
     systemctl is-active --quiet $service || systemctl start $service
 done
