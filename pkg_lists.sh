@@ -6,15 +6,13 @@
 parse_package_list() {
     echo "$1" | sed 's/#.*$//g' | tr '\n' ' '
 }
-# for x in $(echo $hi); do echo got $x; done
 
 export BASE_PACKAGE_LIST=$(parse_package_list '
 zsh
 git
-# emacs
+emacs-wayland
 neovim
 xfce4
-awesome
 kitty
 mpv
 sxhkd
@@ -82,6 +80,15 @@ jupyter-notebook
 ninja
 dosfstools
 jdk-openjdk
+lxappearance
+xournalpp
+
+# for wayland
+keyd
+hyprland
+sddm
+wl-clipboard
+xorg-xwayland
 
 ollama
 
@@ -96,8 +103,6 @@ networkmanager
 grub
 efibootmgr
 linux-firmware sof-firmware
-xorg
-xorg-xinit
 
 nodejs
 npm
@@ -131,6 +136,8 @@ adb-sync-git
 downgrade
 # koboldcpp-bin
 # miniconda3
+adwaita-dark
+hawck-git
 
 dict-gcide dict-wn dict-moby-thesaurus
 ')
