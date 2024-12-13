@@ -75,6 +75,7 @@ arch-chroot /mnt /bin/bash -c '
   ln -sf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime
   hwclock --systohc
   echo "LANG=en_US.UTF-8" > /etc/locale.conf
+  sed -i "s/.*en_US.UTF-8.*/en_US.UTF-8 UTF-8/" /etc/locale.gen
   locale-gen
   echo "mahmooz" > /etc/hostname
   grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=usb /dev/sda
