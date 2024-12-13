@@ -107,6 +107,10 @@ EOF
 # done
 # EOF
 
+# use adwaita-dark gtk theme
+gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
+gsettings set org.gnome.desktop.interface icon-theme Adwaita-dark
+
 for service in NetworkManager sshd mongodb my_mpv_logger_service dictd bluetooth sddm keyd; do
     sudo systemctl enable $service
     sudo systemctl is-active --quiet $service || sudo systemctl start $service
