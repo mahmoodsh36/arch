@@ -104,6 +104,9 @@ grub
 efibootmgr
 linux-firmware sof-firmware
 
+gdm
+hyprland
+
 nodejs
 npm
 sbcl
