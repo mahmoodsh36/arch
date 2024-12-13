@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 # this file needs to be sourced
 export MAIN_SERVER_IPV6="2a01:4f9:c012:ad1b::1";
-export MAIN_SERVER_USER="root";
+export MAIN_SERVER_USER="mahmooz";
 export MAIN_SERVER_IP="95.217.0.99";
 export HOME_SERVER_IP="192.168.1.150";
 export MAIN_USER="mahmooz";
