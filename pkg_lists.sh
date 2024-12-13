@@ -89,6 +89,8 @@ hyprland
 sddm
 wl-clipboard
 xorg-xwayland
+grim
+slurp
 
 ollama
 
