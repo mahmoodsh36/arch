@@ -12,7 +12,6 @@ zsh
 git
 emacs-wayland
 neovim
-xfce4
 kitty
 mpv
 sxhkd
@@ -144,7 +143,9 @@ downgrade
 # koboldcpp-bin
 # miniconda3
 adwaita-dark
-hawck-git
+# hawck-git
+map2-bin
+python-map2
 
 dict-gcide dict-wn dict-moby-thesaurus
 ')
