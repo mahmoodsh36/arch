@@ -6,7 +6,7 @@
 source ./env.sh
 
 # faster touchpad, tap to click, other touchpad features
-cat << EOF | sudo tee -a /etc/X11/xorg.conf.d/70-synaptics.conf
+cat << EOF | sudo tee /etc/X11/xorg.conf.d/70-synaptics.conf
 Section "InputClass"
 Identifier "touchpad"
 Driver "libinput"
@@ -23,7 +23,7 @@ Option "AccelSpeed" "0.9"
 EndSection
 EOF
 
-cat << EOF | sudo tee -a /etc/systemd/system/my_mpv_logger_service.service
+cat << EOF | sudo tee /etc/systemd/system/my_mpv_logger_service.service
 [Unit]
 Description=mpv logger
 
@@ -38,13 +38,13 @@ WantedBy=multi-user.target
 EOF
 
 # sudo without password
-cat << 'EOF' | sudo tee -a /etc/sudoers
+cat << 'EOF' | sudo tee /etc/sudoers
 mahmooz ALL=(ALL:ALL) NOPASSWD: ALL
 EOF
 
 # keyd config
 mkdir /etc/keyd 2>/dev/null
-cat << 'EOF' | sudo tee -a /etc/keyd/default.conf
+cat << 'EOF' | sudo tee /etc/keyd/default.conf
 [ids]
 *
 
@@ -53,7 +53,7 @@ capslock=esc
 rightalt=leftcontrol
 EOF
 
-cat << EOF | sudo tee -a /usr/share/applications/mympv.desktop
+cat << EOF | sudo tee /usr/share/applications/mympv.desktop
 [Desktop Entry]
 Type=Application
 Name=mympv
@@ -85,7 +85,7 @@ sudo sed -i "s/.*en_US.UTF-8.*/en_US.UTF-8 UTF-8/" /etc/locale.gen
 
 # ACTION=="add", SUBSYSTEM=="block", SUBSYSTEMS=="usb", ENV{ID_FS_UUID}=="777ddbd7-9692-45fb-977e-0d6678a4a213", RUN+="/usr/bin/mkdir -p /home/mahmooz/mnt" RUN+="/usr/bin/systemd-mount $env{DEVNAME} /home/mahmooz/mnt/", RUN+="/usr/bin/logger --tag my-manual-usb-mount udev rule for drive %k with uuid $env{ID_FS_UUID}"
 # SUBSYSTEM=="block", ENV{ID_FS_UUID}=="be5af23f-da6d-42ee-a346-5ad3af1a299a", RUN+="mkdir -p /home/mahmooz/mnt2" RUN+="systemd-mount $env{DEVNAME} /home/mahmooz/mnt2", RUN+="logger --tag my-manual-usb-mount udev rule for drive %k with uuid $env{ID_FS_UUID}"
-cat << 'EOF' | sudo tee -a /etc/udev/rules.d/mystorage.rules
+cat << 'EOF' | sudo tee /etc/udev/rules.d/mystorage.rules
 SUBSYSTEM=="block", ENV{ID_FS_UUID}=="777ddbd7-9692-45fb-977e-0d6678a4a213", RUN+="/bin/sh -c '/usr/bin/mkdir -p /home/mahmooz/mnt; /usr/bin/systemd-mount %E{DEVNAME} /home/mahmooz/mnt; /usr/bin/logger --tag my-manual-usb-mount udev rule for drive %k with uuid %E{ID_FS_UUID}'"
 SUBSYSTEM=="block", ENV{ID_FS_UUID}=="be5af23f-da6d-42ee-a346-5ad3af1a299a", RUN+="/bin/sh -c '/usr/bin/mkdir -p /home/mahmooz/mnt2; /usr/bin/systemd-mount %E{DEVNAME} /home/mahmooz/mnt2; /usr/bin/logger --tag my-manual-usb-mount udev rule for drive %k with uuid %E{ID_FS_UUID}'"
 EOF
@@ -111,7 +111,16 @@ EOF
 gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
 gsettings set org.gnome.desktop.interface icon-theme Adwaita-dark
 
-for service in NetworkManager sshd mongodb my_mpv_logger_service dictd bluetooth sddm keyd; do
+for service in\
+  NetworkManager\
+  sshd\
+  my_mpv_logger_service\
+  dictd\
+  bluetooth\
+  hawck-inputd\
+  keyd\
+  sddm;
+do
     sudo systemctl enable $service
     sudo systemctl is-active --quiet $service || sudo systemctl start $service
 done
